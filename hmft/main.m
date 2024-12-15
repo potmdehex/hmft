@@ -44,22 +44,26 @@ static int go(void)
 
 
 int main(int argc, char * argv[]) {
-    if (@available(iOS 14.0, *)) {
-        if (@available(iOS 15.0, *)) {
-            NSLog(@"No LPE, skipping");
-        } else {
-            if (SYSTEM_VERSION_LESS_THAN(@"14.2")) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:@"/usr/sbin/mediaserverd"]) {
+        if (@available(iOS 14.0, *)) {
+            if (@available(iOS 15.0, *)) {
                 NSLog(@"No LPE, skipping");
             } else {
-                NSLog(@"LPE supported, using");
-                
-                pthread_t pt;
-                pthread_create(&pt, NULL, (void *(*)(void *))go, NULL);
-                pthread_join(pt, NULL);
+                if (SYSTEM_VERSION_LESS_THAN(@"14.2")) {
+                    NSLog(@"No LPE, skipping");
+                } else {
+                    NSLog(@"LPE supported, using");
+                    
+                    pthread_t pt;
+                    pthread_create(&pt, NULL, (void *(*)(void *))go, NULL);
+                    pthread_join(pt, NULL);
+                }
             }
+        } else {
+            NSLog(@"No LPE, skipping");
         }
     } else {
-        NSLog(@"No LPE, skipping");
+        NSLog(@"Already jailbroken, skipping");
     }
     
     NSString * appDelegateClassName;
