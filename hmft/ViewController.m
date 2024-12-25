@@ -692,7 +692,7 @@ NSString *__NSTemporaryDirectory(void)
 
 - (void)showHelp {
     UIAlertController *helpAlert = [UIAlertController alertControllerWithTitle:@"About HMFT"
-        message:@"HMFT is a humble mobile forensics tool for browsing, calculating the hash integrity of, and extracting files from iOS devices.\n\nHMFT allows selecting a single or multiple files, producing their SHA256 hashes with the Check Integrity button, and creating an archive of any files selected saved to Files using the Extact button.\n\nHMFT also allows using the Share button next to the filename of any file or directory to share it using Airdrop or other installed apps."
+        message:@"HMFT is a humble mobile forensics tool for browsing, calculating the hash integrity of, and extracting files from iOS devices.\n\nHMFT allows selecting a single or multiple files, producing their SHA256 hashes with the Check Integrity button, and creating an archive of any files selected saved to Files using the Exrtact button.\n\nHMFT also allows using the Share button next to the filename of any file or directory to share it using Airdrop or other installed apps."
         preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *closeAction = [UIAlertAction actionWithTitle:@"Close"
